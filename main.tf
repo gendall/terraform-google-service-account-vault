@@ -30,7 +30,7 @@ resource "vault_generic_secret" "secret_key" {
 
 resource "vault_gcp_secret_roleset" "secret_token" {
   backend      = "gcp"
-  roleset      = var.token
+  roleset      = trimprefix(var.token, "gcp/roleset/")
   secret_type  = "access_token"
   project      = data.google_project.project.project_id
   token_scopes = ["https://www.googleapis.com/auth/devstorage.read_only"]
