@@ -1,13 +1,25 @@
 variable "name" {
   type = string
-  default = "deploy"
+  default = "service"
   description = "The account name to use for the Google Service Account."
 }
 
 variable "display" {
   type = string
-  default = "Automated deploy account"
+  default = "Automated service account"
   description = "The human-readable name shown in the Google Cloud Platform console."
+}
+
+variable "key" {
+  type = string
+  default = null
+  description = "A Hashicorp Vault path at which to store the Service Account Key"
+}
+
+variable "token" {
+  type = string
+  default = null
+  description = "A Hashicorp Vault path at which to create a Google Cloud Secrets roleset to fetch a Service Account Token"
 }
 
 variable "roles" {
