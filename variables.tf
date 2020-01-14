@@ -12,13 +12,13 @@ variable "display" {
 
 variable "key" {
   type = string
-  default = null
+  default = ""
   description = "A Hashicorp Vault path at which to store the Service Account Key"
 }
 
 variable "token" {
   type = string
-  default = null
+  default = ""
   description = "A Hashicorp Vault path at which to create a Google Cloud Secrets roleset to fetch a Service Account Token"
 }
 

@@ -25,7 +25,7 @@ resource "google_service_account_key" "account_key" {
 resource "vault_generic_secret" "secret_key" {
   path = var.key
   data_json = "{\"key\": \"${base64decode(google_service_account_key.account_key.private_key)}\"}"
-  count = var.key ? 1 : 0
+  count = var.key != "" ? 1 : 0
 }
 
 resource "vault_gcp_secret_roleset" "secret_token" {
@@ -40,7 +40,7 @@ resource "vault_gcp_secret_roleset" "secret_token" {
     roles = var.roles
   }
 
-  count = var.token ? 1 : 0
+  count = var.token != "" ? 1 : 0
 }
 
 data "google_service_account_access_token" "account_token" {
