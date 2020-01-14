@@ -32,11 +32,11 @@ resource "vault_gcp_secret_roleset" "secret_token" {
   backend      = "gcp"
   roleset      = var.token
   secret_type  = "access_token"
-  project      = google_project.project.project_id
+  project      = data.google_project.project.project_id
   token_scopes = ["https://www.googleapis.com/auth/devstorage.read_only"]
 
   binding {
-    resource = "//cloudresourcemanager.googleapis.com/projects/${google_project.project.project_id}"
+    resource = "//cloudresourcemanager.googleapis.com/projects/${data.google_project.project.project_id}"
     roles = var.roles
   }
 
